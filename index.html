@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chet</title>
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+
+    body{
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background-color: rgb(63, 63, 63);
+    }
+
+    main{
+        display:flex;
+        flex-direction: column;
+        height: 90vh;
+        width: 800px;
+        max-width: 95vw;
+        background-color: rgb(36, 36, 36);
+        padding: 8px;
+    }
+
+        #historico{
+            width: 100%;
+            background-color: rgb(53, 53, 53);
+            flex-grow : 1;
+            color:white;
+        }
+
+        #chat{
+            display:flex;
+            flex-direction: row;
+            height: 10%;
+            min-height: 30px;
+            padding-top: 8px;
+        }
+
+            #mensagem{
+                border: none;
+                float: left;
+                flex-grow : 2;
+                height: 100%;
+                background-color: rgb(189, 189, 189);
+                
+            }
+
+                #mensagem:focus{
+                    outline: none;
+                }
+
+            #enviar{
+                border: none;
+                float: right;
+                flex-grow : 1;
+                height: 100%;
+                margin-left: 10px;
+            }
+    #vermelho{
+        color:red
+    }
+
+</style>
+
+</head>
+<body>
+    <main>
+        <div id='acesso_usuario'>
+            <form id='login'>
+                <input type='text' placeholder='Insira seu apelido' name='apelido' id='apelido' />
+                <input type='submit' value='Entrar' />
+            </form>
+       </div>
+        <div id='historico'></div>
+        <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>
+        <form id='chat'>
+            <textarea id ='mensagem' type='text' name='mensagem'></textarea>
+            <input id='enviar' type='submit' value='Enviar' />
+        </form>
+    </main>
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+    var socket = io.connect();
+
+    $("form#chat").submit(function(e){
+        e.preventDefault();
+
+        socket.emit("enviar mensagem", $(this).find("#mensagem").val(), function(){
+              $("form#chat #mensagem").val("");
+        });
+    });
+        socket.on("atualizar mensagens", function(data,nome,mensagem){
+        var mensagem_formatada = $("<p />").html(data+`<span style="color:red">${nome}</span>`+mensagem);
+         $("#historico").append(mensagem_formatada);
+    });
+
+    $("form#login").submit(function(e){
+     e.preventDefault();
+
+     socket.emit("entrar", $(this).find("#apelido").val(), function(valido){
+         if(valido){
+              $("#acesso_usuario").hide();
+         }else{
+              $("#acesso_usuario").val("");
+              alert("Nome já utilizado nesta sala");
+         }
+     });
+});
+
+socket.on("atualizar usuarios", function(usuarios){
+$("#lista_usuarios").empty();
+$("#lista_usuarios").append("<option value=''>Todos</option>");
+     $.each(usuarios, function(indice){
+          var opcao_usuario = $("<option />").text(usuarios[indice]);
+          $("#lista_usuarios").append(opcao_usuario);
+      });
+});
+
+</script>
+</html>
+
