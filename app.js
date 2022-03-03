@@ -3,7 +3,7 @@ var fs = require('fs');
 var io = require('socket.io')(app);
 var usuarios = [];
 
-app.listen(3000);
+app.listen(process.env.PORT || 8080);
 console.log("Aplicação está em execução...");
 
 function resposta (req, res) {
