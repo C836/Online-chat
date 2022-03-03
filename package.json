@@ -1,0 +1,21 @@
+{
+  "name": "online-chat",
+  "version": "1.0.0",
+  "description": "Chat virtual com sistema de salas e usuários online utilizando socket.IO e nodeJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/C836/Online-chat.git"
+  },
+  "author": "C836",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/C836/Online-chat/issues"
+  },
+  "dependencies": {
+    "socket.io": "^4.4.1"
+  }
+}
