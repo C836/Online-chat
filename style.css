@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+textarea, input, button {
+    outline: none; 
+    border:none; 
+    -webkit-appearance: none;}
+
+/*cores*/
+
+:root{
+    --primaria: #826AED;
+    --primariaDark: #4B3E89;
+}
+
+#background{
+    position: fixed;
+    z-index: -1;
+    height: 150vh;
+    width: 150vw;
+    top:-40%;
+    left:-40%;
+    background-color: rgb(71, 71, 71);
+}
+
+.preLogin{
+    filter: blur(5px) brightness(65%);
+}
+
+#interface{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+
+#login{
+    width: 300px;
+    height: 270px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    border-radius: 20px;
+    z-index: 99;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+ 
+}
+    #apelido{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        background-color: rgb(228, 228, 228);
+        border: solid 3px grey;
+        border-radius: 10px;
+        font: 300 20px 'Poppins', sans-serif;
+        padding-left:10px ;
+    }
+
+    #toggleDark{
+        display:flex; 
+        flex-direction:row;  
+        margin-top: 10px;
+        align-items: center;
+        font: 300 16px 'Poppins', sans-serif;
+    }
+
+    #botoes_login{
+        margin-top: auto;
+    }
+
+        .entrar{
+            margin-top: 10px;
+            width: 100%;
+            color: rgb(255, 255, 255);
+            height: 55px;
+            background-color: var(--primaria);
+            border-radius: 10px;
+            font: 500 20px 'Poppins', sans-serif;
+            cursor: pointer;
+        }
+        .entrar:nth-child(1){
+            color: white;
+            background-color: var(--primariaDark)
+        }
+
+        .entrar:hover{
+            filter: brightness(65%);
+        }
+     
+
+
+
+/*#region*/
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+    
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    
+    input:checked + .slider {
+        background-color: #474747;
+    }
+    
+    input:focus + .slider {
+        box-shadow: 0 0 1px #474747;
+    }
+    
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+    
+    .slider.round {
+        border-radius: 34px;
+    }
+    
+    .slider.round:before {
+        border-radius: 50%;
+    }
+/*#endregion*/
+
+main{
+    display:flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 800px;
+    max-width: 95vw;
+    background-color: rgb(36, 36, 36);
+    padding: 8px;
+}
+
+    #historico{
+        overflow-y: auto;
+        word-wrap: break-word;
+        width: 100%;
+        background-color: rgb(53, 53, 53);
+        height: 500px;
+        color:white;
+    }
+
+    #chat{
+        display:flex;
+        flex-direction: row;
+        height: 10%;
+        min-height: 30px;
+        padding-top: 8px;
+    }
+
+        #mensagem{
+            border: none;
+            float: left;
+            flex-grow : 2;
+            height: 100%;
+            background-color: rgb(189, 189, 189);
+            
+        }
+
+            #mensagem:focus{
+                outline: none;
+            }
+
+        #enviar{
+            border: none;
+            float: right;
+            flex-grow : 1;
+            height: 100%;
+            margin-left: 10px;
+        }
