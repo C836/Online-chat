@@ -34,8 +34,10 @@
     </div>
     <div id="interface" class="preLogin">
         <main>
-            <div id='historico'></div>
-            <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>
+            <div id="display">
+                <div id='historico'></div>
+                <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>
+            </div>
             <form id='chat'>
                 <textarea id ='mensagem' type='text' name='mensagem'></textarea>
                 <input id='enviar' type='submit' value='Enviar' />
@@ -59,11 +61,17 @@
         });
     });
 
+        socket.on("limpar_chat", function(){
+            $("#historico").text('')
+        })
+
         socket.on("atualizar mensagens", function(data,nome,mensagem){
             if(nome!='Anônimo'){
-                var mensagem_formatada = $("<p />").html(data+`<span style="color:red">${nome}</span>`+mensagem);}
+                var mensagem_formatada = $("<p />").html(
+                    data+`<span style="font: 300 16px 'Poppins', sans-serif;"><span style="color:red">${nome}</span>`+mensagem);}
             else{
-                var mensagem_formatada = $("<p />").html(data+`<span style="color:#aa0000">${nome}</span>`+mensagem);
+                var mensagem_formatada = $("<p />").html(
+                    data+`<span style="font: 300 16px 'Poppins', sans-serif;"><span style="color:#aa0000">${nome}</span>`+mensagem);
             }
         $("#historico").append(mensagem_formatada);
 
@@ -78,7 +86,7 @@
         $("#interface").removeClass("preLogin")
 
         if(valido){
-            $("#acesso_usuario").hide();
+            $("#login").fadeOut(200);
         }else{
             $("#acesso_usuario").val("");
             alert("Nome já utilizado nesta sala");
@@ -92,7 +100,7 @@
 
         socket.emit("entrar", 'Anônimo', function(valido){
         if(valido){
-            $("#acesso_usuario").hide();
+            $("#login").fadeOut(200);
         }
     });
     });

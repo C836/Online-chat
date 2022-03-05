@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins:wght@300;600&display=swap');
 
 *{
     padding: 0;
@@ -8,13 +8,18 @@
 textarea, input, button {
     outline: none; 
     border:none; 
-    -webkit-appearance: none;}
+    -webkit-appearance: none;
+}
 
 /*cores*/
 
 :root{
     --primaria: #826AED;
     --primariaDark: #4B3E89;
+}
+
+.msgHist{
+    font: 300 16px 'Poppins', sans-serif;
 }
 
 #background{
@@ -25,6 +30,7 @@ textarea, input, button {
     top:-40%;
     left:-40%;
     background-color: rgb(71, 71, 71);
+    transition: all 0.5s, height 0s, width 0s;
 }
 
 .preLogin{
@@ -36,6 +42,7 @@ textarea, input, button {
     justify-content:center;
     align-items:center;
     height:100vh;
+    transition: all 0.5s, height 0s, width 0s;
 }
 
 
@@ -54,7 +61,6 @@ textarea, input, button {
     border-radius: 20px;
     z-index: 99;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
- 
 }
     #apelido{
         width: 100%;
@@ -97,9 +103,6 @@ textarea, input, button {
         .entrar:hover{
             filter: brightness(65%);
         }
-     
-
-
 
 /*#region*/
     .switch {
@@ -169,24 +172,47 @@ main{
     width: 800px;
     max-width: 95vw;
     background-color: rgb(36, 36, 36);
-    padding: 8px;
+    border-radius: 15px;
 }
 
-    #historico{
-        overflow-y: auto;
-        word-wrap: break-word;
-        width: 100%;
-        background-color: rgb(53, 53, 53);
-        height: 500px;
-        color:white;
+    #display{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        flex-grow:1;
+        margin-bottom: 15px;
     }
+
+        #historico{
+            overflow-y: auto;
+            word-wrap: break-word;
+            background-color: rgb(53, 53, 53);
+            height: 100%;
+            color:white;
+            margin: 15px;
+            border-radius: 15px;
+            padding: 0 12px;
+            line-height: 1.6;
+
+        }
+
+        #lista_usuarios{
+            margin: 15px 15px 15px  0;
+            border-radius: 8px;
+            height: 100%;
+            font: 300 18px 'Poppins', sans-serif;
+            overflow: hidden;
+            padding: 5px;
+        }
+
+            #lista_usuarios:focus{
+                outline:none
+            }
 
     #chat{
         display:flex;
         flex-direction: row;
-        height: 10%;
-        min-height: 30px;
-        padding-top: 8px;
+        height: 80px;
+        margin: 15px;
     }
 
         #mensagem{
@@ -194,8 +220,9 @@ main{
             float: left;
             flex-grow : 2;
             height: 100%;
+            border-radius: 8px;
             background-color: rgb(189, 189, 189);
-            
+            resize:none;
         }
 
             #mensagem:focus{
@@ -207,5 +234,6 @@ main{
             float: right;
             flex-grow : 1;
             height: 100%;
+            border-radius: 8px;
             margin-left: 10px;
         }
