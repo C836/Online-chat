@@ -2,7 +2,7 @@ var socket = io.connect();
     var meuNome = ''
 
     $('#mensagem').keypress(function (e) {
-    if ((e.which == 13)&&(("#mensagem").val().replace(/\s/g, '')!=="")) {
+    if ((e.which == 13)&&($("#mensagem").val().replace(/\s/g, '')!=="")) {
 
         var mensagem = $("#mensagem").val();
         var usuario = $("#lista_usuarios").val();

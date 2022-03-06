@@ -16,7 +16,7 @@ main{
     height: 90%;
     width: 800px;
     max-width: 95vw;
-    background-color: rgb(210, 210, 210);
+    background-color: var(--claroOutline);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -31,13 +31,13 @@ main{
         #historico{
             overflow-y: auto;
             word-wrap: break-word;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(255 255 255);
             color:rgb(0, 0, 0);
             margin: 15px;
             border-radius: 10px;
             padding: 0 5px;
             line-height: 1.6;
-            border: solid white 10px;
+            border: solid transparent 10px;
         }
 
         #lista_usuarios{
@@ -74,7 +74,7 @@ main{
             border-radius: 8px;
             background-color: rgb(255, 255, 255);
             resize:none;
-            border: solid white 8px;
+            border: solid transparent 8px;
             padding-right: 4px;
             font: 300 15px 'Poppins', sans-serif;
         }
@@ -93,6 +93,9 @@ main{
             font: 300 20px 'Poppins', sans-serif;
             background-color: var(--primaria);
             color: white;
+            cursor: pointer;
+        }
 
-            
+        #enviar:hover{
+            filter: brightness(65%);
         }

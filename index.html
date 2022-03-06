@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="client/master.css">
     <link rel="stylesheet" href="client/classes.css">
     <link rel="stylesheet" href="client/colors/color_set.css">
+    <link rel="stylesheet" href="client/colors/dark_mode/switch.css">
+    <script src="client/colors/dark_mode/dark_mode.js" defer></script>
     
     <link rel="stylesheet" href="client/components/classes.css">
     <link rel="stylesheet" href="client/components/login.css">
     <link rel="stylesheet" href="client/components/menu.css">
-    <link rel="stylesheet" href="client/components/switch.css">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
@@ -24,6 +25,7 @@
 
 </head>
 <body>
+
     <div id="background" class="preLogin">
     </div>
 
@@ -33,7 +35,7 @@
             
             <div id="toggleDark">
                 <label class="switch" style="margin:10px 10px 10px 0">
-                    <input type="checkbox">
+                    <input type="checkbox" id="onOff">
                     <span class="slider round">
                     </span>
                 </label>
@@ -47,7 +49,7 @@
         </form>
     </div>
     <div id="interface" class="preLogin">
-        <main>
+        <main id="main">
             <div id="display">
                 <div id='historico'></div>
                 <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>

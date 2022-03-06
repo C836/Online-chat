@@ -14,7 +14,7 @@ textarea, input, button {
 }
 
 body{
-    background-color: var(--primariaBackground);
+    background-color: var(--claroBackground);
 }
 
 #background{

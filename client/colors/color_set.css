@@ -2,8 +2,12 @@
     --primaria: #826AED;
     --primariaBright: #a99fdd;
     --primariaDark: #4B3E89;
-    --primariaBackground: #9587e1;
 
-    --claroPrimaria: white;
-    --claroDark: 
+    --claroOutline:#cec5ff;
+    --claroSecundaria: #ffffff;
+    --claroBackground: #9587e1;
+
+    --escuroOutline: #26252e;
+    --escuroSecundaria: #36353e;
+    --escuroBackground: #363050;
 }
