@@ -1,0 +1,98 @@
+.msgHist{
+    font: 300 16px 'Poppins', sans-serif;
+}
+
+#interface{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    transition: all 0.5s, height 0s, width 0s;
+}
+
+main{
+    display:flex;
+    flex-direction: column;
+    height: 90%;
+    width: 800px;
+    max-width: 95vw;
+    background-color: rgb(210, 210, 210);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+    #display{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        flex-grow:1;
+        height: 80%;
+    }
+
+        #historico{
+            overflow-y: auto;
+            word-wrap: break-word;
+            background-color: rgb(255, 255, 255);
+            color:rgb(0, 0, 0);
+            margin: 15px;
+            border-radius: 10px;
+            padding: 0 5px;
+            line-height: 1.6;
+            border: solid white 10px;
+        }
+
+        #lista_usuarios{
+            margin: 15px 15px 15px  0;
+            border-radius: 8px;
+            font: 300 18px 'Poppins', sans-serif;
+            overflow: hidden;
+            border:none;
+            text-indent: 10px;
+
+        }
+
+            #lista_usuarios:focus{
+                outline:none;
+            }
+        
+            option:checked{
+                background-color: rgb(175, 175, 175);
+            }
+
+    #chat{
+        display:flex;
+        flex-direction: row;
+        height: 80px;
+        margin: 0 15px 15px;
+    }
+
+        #mensagem{
+            box-sizing: border-box; 
+            border: none;
+            float: left;
+            flex-grow : 2;
+            height: 100%;
+            border-radius: 8px;
+            background-color: rgb(255, 255, 255);
+            resize:none;
+            border: solid white 8px;
+            padding-right: 4px;
+            font: 300 15px 'Poppins', sans-serif;
+        }
+
+            #mensagem:focus{
+                outline: none;
+            }
+
+        #enviar{
+            border: none;
+            float: right;
+            flex-grow : 1;
+            height: 100%;
+            border-radius: 8px;
+            margin-left: 15px;
+            font: 300 20px 'Poppins', sans-serif;
+            background-color: var(--primaria);
+            color: white;
+
+            
+        }

@@ -1,0 +1,102 @@
+.preLogin{
+    filter: blur(5px) brightness(80%);
+}
+
+/*estilo de mensagens do histórico*/
+
+.div_entrou{
+    width: 100%;
+    text-align: center;
+}
+
+.msg_entrou{
+    background-color: var(--primariaBright);
+    color: rgb(0, 0, 0);
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    max-width: 80%;
+    display: inline-block;
+}
+
+.div_saiu{
+    width: 100%;
+    text-align: center;
+}
+
+.msg_saiu{
+    background-color: var(--primaria);
+    color: rgb(0, 0, 0);
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    max-width: 80%;
+    display: inline-block;
+}
+
+.msg_propria{
+    background-color: var(--primaria);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    float: right;
+    margin-bottom: 8px;
+    max-width: 80%;
+    margin-left: 120px;
+    }
+
+.msg_outros{
+    background-color: #dddddd;
+    padding: 8px 20px;
+    border-radius: 20px;
+    clear:right;
+    margin-bottom: 8px;
+    max-width: 80%;
+    display: inline-block;
+}
+
+.msg_privada{
+    font: 400 16px 'Poppins', sans-serif;
+    background-color: var(--primariaDark);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    float: right;
+    margin-bottom: 8px;
+    max-width: 80%;
+    margin-left: 120px;
+}
+
+.msg_hist{
+    color: white;
+    background-color: #4d4d4d;
+    padding: 8px 20px;
+    border-radius: 20px;
+    clear:right;
+    margin-bottom: 8px;
+    max-width: 80%;
+    display: inline-block;
+}
+
+/*scrollbar*/
+
+#historico::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 5px;
+}
+
+#mensagem::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 6px;
+}
+    
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+    
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+    

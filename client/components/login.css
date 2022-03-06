@@ -1,0 +1,57 @@
+#login{
+    width: 300px;
+    height: 270px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    border-radius: 20px;
+    z-index: 99;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+    #apelido{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        background-color: rgb(228, 228, 228);
+        border: solid 3px grey;
+        border-radius: 10px;
+        font: 300 20px 'Poppins', sans-serif;
+        padding-left:10px ;
+    }
+
+    #toggleDark{
+        display:flex; 
+        flex-direction:row;  
+        margin-top: 10px;
+        align-items: center;
+        font: 300 16px 'Poppins', sans-serif;
+    }
+
+    #botoes_login{
+        margin-top: auto;
+    }
+
+        .entrar{
+            margin-top: 10px;
+            width: 100%;
+            color: rgb(255, 255, 255);
+            height: 55px;
+            background-color: var(--primaria);
+            border-radius: 10px;
+            font: 500 20px 'Poppins', sans-serif;
+            cursor: pointer;
+        }
+        .entrar:nth-child(1){
+            color: white;
+            background-color: var(--primariaDark)
+        }
+
+        .entrar:hover{
+            filter: brightness(65%);
+        }

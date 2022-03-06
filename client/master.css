@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins:wght@300;400;600&display=swap');
+
+/*reset*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+textarea, input, button {
+    outline: none; 
+    border:none; 
+    -webkit-appearance: none;
+}
+
+body{
+    background-color: var(--primariaBackground);
+}
+
+#background{
+    position: fixed;
+    z-index: -1;
+    height: 150vh;
+    width: 150vw;
+    top:-40%;
+    left:-40%;
+    background-image: url('components/images/background_pattern.png');
+    background-repeat: repeat;
+    background-size: 380px 380px;
+}
+ 

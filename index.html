@@ -5,14 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chet</title>
-    <link rel="stylesheet" href="style.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
     <script src="https://kit.fontawesome.com/1ace605db6.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="client/master.css">
+    <link rel="stylesheet" href="client/classes.css">
+    <link rel="stylesheet" href="client/colors/color_set.css">
+    
+    <link rel="stylesheet" href="client/components/classes.css">
+    <link rel="stylesheet" href="client/components/login.css">
+    <link rel="stylesheet" href="client/components/menu.css">
+    <link rel="stylesheet" href="client/components/switch.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="client/events/index.js" defer></script>
+
 </head>
 <body>
-    <div id="background" class="prelogin"></div>
+    <div id="background" class="preLogin">
+    </div>
+
     <div id='acesso_usuario'>
         <form id='login'>
             <input type='text' placeholder='Insira seu apelido' name='apelido' id='apelido' />
@@ -39,81 +53,11 @@
                 <select multiple="multiple" id='lista_usuarios'><option value=''>Todos</option></select>
             </div>
             <form id='chat'>
-                <textarea id ='mensagem' type='text' name='mensagem'></textarea>
+                <textarea id ='mensagem' type='text' name='mensagem' maxlength="200" placeholder="Digite sua mensagem (máximo 200 caracteres)"></textarea>
                 <input id='enviar' type='submit' value='Enviar' />
             </form>
         </main>
     </div>
 </body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script type="text/javascript">
-    var socket = io.connect();
-
-    $("form#chat").submit(function(e){
-        e.preventDefault();
-
-        var mensagem = $(this).find("#mensagem").val();
-        var usuario = $("#lista_usuarios").val();
-
-        socket.emit("enviar mensagem", {msg: mensagem, usu: usuario}, function(){
-        $("form#chat #mensagem").val("");
-        });
-    });
-
-        socket.on("limpar_chat", function(){
-            $("#historico").text('')
-        })
-
-        socket.on("atualizar mensagens", function(data,nome,mensagem){
-            if(nome!='Anônimo'){
-                var mensagem_formatada = $("<p />").html(
-                    data+`<span style="font: 300 16px 'Poppins', sans-serif;"><span style="color:red">${nome}</span>`+mensagem);}
-            else{
-                var mensagem_formatada = $("<p />").html(
-                    data+`<span style="font: 300 16px 'Poppins', sans-serif;"><span style="color:#aa0000">${nome}</span>`+mensagem);
-            }
-        $("#historico").append(mensagem_formatada);
-
-        document.getElementById("historico").scrollTop = document.getElementById("historico").scrollHeight;
-    });
-
-    $("form#login").submit(function(e){
-    e.preventDefault();
-
-    socket.emit("entrar", $(this).find("#apelido").val(), function(valido){
-        $("#background").removeClass("preLogin")
-        $("#interface").removeClass("preLogin")
-
-        if(valido){
-            $("#login").fadeOut(200);
-        }else{
-            $("#acesso_usuario").val("");
-            alert("Nome já utilizado nesta sala");
-        }
-    });
-});
-
-    $("#anon").click(function() {
-        $("#background").removeClass("preLogin")
-        $("#interface").removeClass("preLogin")
-
-        socket.emit("entrar", 'Anônimo', function(valido){
-        if(valido){
-            $("#login").fadeOut(200);
-        }
-    });
-    });
-
-socket.on("atualizar usuarios", function(usuarios){
-$("#lista_usuarios").empty();
-$("#lista_usuarios").append("<option value=''>Todos</option>");
-     $.each(usuarios, function(indice){
-          var opcao_usuario = $("<option />").text(usuarios[indice]);
-          $("#lista_usuarios").append(opcao_usuario);
-      });
-});
-
-</script>
 </html>
 
