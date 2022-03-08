@@ -4,6 +4,16 @@
 
 /*estilo de mensagens do histórico*/
 
+.data{
+    font: 15px 'Inconsolata', monospace;
+    color: var(--escuroBackground);
+}
+
+.dataHist{
+    font: 15px 'Inconsolata', monospace;
+    color: white;
+}
+
 .div_entrou{
     width: 100%;
     text-align: center;

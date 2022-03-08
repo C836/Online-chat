@@ -42,9 +42,9 @@ io.on("connection", function(socket){
 
             io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
 
-            socket.emit("entrou", "["+pegarDataAtual()+"] ", apelido , " entrou na sala");
+            socket.emit("entrou", "("+pegarDataAtual()+") ", apelido , " entrou na sala");
 
-            socket.broadcast.emit("entrou", "["+pegarDataAtual()+"] ", apelido , " acabou de entrar na sala");
+            socket.broadcast.emit("entrou", "("+pegarDataAtual()+") ", apelido , " acabou de entrar na sala");
 
             callback(true);
         }
@@ -61,9 +61,9 @@ io.on("connection", function(socket){
 
             io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
 
-            socket.emit("entrou", "["+pegarDataAtual()+"] ", apelido , " entrou na sala");
+            socket.emit("entrou", "("+pegarDataAtual()+") ", apelido , " entrou na sala");
 
-            socket.broadcast.emit("entrou", "["+pegarDataAtual()+"] ", apelido , " acabou de entrar na sala");
+            socket.broadcast.emit("entrou", "("+pegarDataAtual()+") ", apelido , " acabou de entrar na sala");
 
             callback(true);
         }else{
@@ -80,16 +80,19 @@ io.on("connection", function(socket){
         if(usuario == null)
             usuario = '';
 
-            var obj_mensagem = "["+pegarDataAtual()+"] " + '<span class="msgHist">' + socket.apelido + " : " + mensagem_enviada;
+            var obj_mensagem = "("+pegarDataAtual()+") " + '<span class="msgHist">' + socket.apelido + ": " + mensagem_enviada;
 
             if(usuario == ''){
-                    socket.emit("atualizar mensagens", '['+pegarDataAtual()+'] '  ,socket.apelido, " : " + mensagem_enviada);
-                    socket.broadcast.emit("atualizar mensagens", "[" + pegarDataAtual() + "] ",socket.apelido, " : " + mensagem_enviada);
-                    
-                    armazenaMensagem(obj_mensagem);
-            }else{
-                    socket.emit("mensagem privada", '['+pegarDataAtual()+'] ', '' , ` Para <b>${usuario}</b>: ` + mensagem_enviada);
-                    usuarios[usuario].emit("mensagem privada", '['+pegarDataAtual()+'] ','<b>'+socket.apelido+'</b>', ` diz para você: ` + mensagem_enviada);
+                socket.emit("atualizar mensagens", '('+pegarDataAtual()+') '  ,socket.apelido, ": " + mensagem_enviada);
+                socket.broadcast.emit("atualizar mensagens", "(" + pegarDataAtual() + ") ",socket.apelido, ": " + mensagem_enviada);
+                armazenaMensagem(obj_mensagem);
+                
+            }else if((usuario.length>1)||(socket.apelido===usuario.toString())){
+                callback()
+            }
+            else{
+                socket.emit("mensagem privada", '('+pegarDataAtual()+') ', '' , ` Para <b>${usuario}</b>: ` + mensagem_enviada);
+                usuarios[usuario].emit("mensagem privada", '('+pegarDataAtual()+') ','<b>'+socket.apelido+'</b>', ` diz para você: ` + mensagem_enviada);
             }
      
             callback();
@@ -98,17 +101,21 @@ io.on("connection", function(socket){
     socket.on("disconnect", function(){
         delete usuarios[socket.apelido];
         io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
-        io.sockets.emit("sair", "["+pegarDataAtual()+"] " ,socket.apelido, " saiu da sala");
+        io.sockets.emit("sair", "("+pegarDataAtual()+") " ,socket.apelido, " saiu da sala");
     });
 });
 
 function pegarDataAtual(){
- var dataAtual = new Date();
- var hora = (dataAtual.getHours()-3<10 ? '0' : '') + dataAtual.getHours();
- var minuto = (dataAtual.getMinutes()-3<10 ? '0' : '') + dataAtual.getMinutes();
- var segundo = (dataAtual.getSeconds()-3<10 ? '0' : '') + dataAtual.getSeconds();
+ var dataAtual = new Date().toLocaleString("en-US", {timeZone: "America/Sao_Paulo"});
+ dataAtual =  dataAtual.split(" ");
+ var periodo = dataAtual[2]
+ dataAtual =  dataAtual[1].split(":");
 
- var dataFormatada = hora + ":" + minuto + ":" + segundo;
+ var hora = (dataAtual[0]<10 ? '0' : '') + dataAtual[0];
+ var minuto = dataAtual[1];
+ var segundo = dataAtual[2];
+
+ var dataFormatada = hora + ":" + minuto + ":" + segundo + " " + periodo;
  return dataFormatada;
 }
 
