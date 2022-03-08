@@ -6,22 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chet</title>
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
     <script src="https://kit.fontawesome.com/1ace605db6.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="client/master.css">
-    <link rel="stylesheet" href="client/classes.css">
-    <link rel="stylesheet" href="client/colors/color_set.css">
-    <link rel="stylesheet" href="client/colors/dark_mode/switch.css">
-    <script src="client/colors/dark_mode/dark_mode.js" defer></script>
-    
-    <link rel="stylesheet" href="client/components/classes.css">
-    <link rel="stylesheet" href="client/components/login.css">
-    <link rel="stylesheet" href="client/components/menu.css">
+    <link rel="stylesheet" href="assets/master.css">
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/colors/dark_mode/switch.css">
+    <link rel="stylesheet" href="assets/colors/color_selector/pop_up.css">
+        <link rel="stylesheet" href="assets/colors/colors.css">
+
+    <link rel="stylesheet" href="assets/components/classes.css">
+    <link rel="stylesheet" href="assets/components/login.css">
+    <link rel="stylesheet" href="assets/components/menu.css">
+
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="client/events/index.js" defer></script>
+
+    <script type="text/javascript" src="assets/events/atualizar_mensagens.js" defer></script>
+    <script type="text/javascript" src="assets/events/entrar_sair.js" defer></script>
+    <script type="text/javascript" src="assets/events/enviar.js" defer></script>
+    <script type="text/javascript" src="assets/events/login.js" defer></script>
+
+    <script type="text/javascript" src="assets/colors/color_selector/pop_up.js" defer></script>
+    <script src="assets/colors/dark_mode/dark_mode.js" defer></script>
 
 </head>
 <body>
@@ -34,12 +41,22 @@
             <input type='text' placeholder='Insira seu apelido' name='apelido' id='apelido' />
             
             <div id="toggleDark">
-                <label class="switch" style="margin:10px 10px 10px 0">
+                <label class="switch switch-login" style="margin:10px 10px 10px 0">
                     <input type="checkbox" id="onOff">
-                    <span class="slider round">
+                    <span class="slider slider-login round">
                     </span>
                 </label>
                 <div>Modo escuro</div>
+
+                <span class="seletor_cores">
+                    <span class="cor_popup">
+                        <div class="seletor" id="roxo" onclick="purple()"></div>
+                        <div class="seletor" id="azul" onclick="blue()"></div>
+                        <div class="seletor" id="rosa" onclick="pink()"></div>
+                        <div class="seletor" id="amarelo" onclick="yellow()"></div>
+                        <div class="seletor" id="verde" onclick="green()"></div>
+                    </span>
+                </span><span style="margin-left: 10px; margin-right: 5px">Cor</span>
             </div>
 
             <div id="botoes_login">
@@ -56,6 +73,23 @@
             </div>
             <form id='chat'>
                 <textarea id ='mensagem' type='text' name='mensagem' maxlength="200" placeholder="Digite sua mensagem (máximo 200 caracteres)"></textarea>
+                <div id="toggleDark-menu">
+                    
+                    <label class="switch switch-menu">
+                        <input type="checkbox" id="checkMenu">
+                            <span class="slider slider-menu round">
+                            </span>
+                    </label>
+                    <span class="seletor_cores" id="seletor_menu">
+                        <span class="cor_popup" id="popup_menu">
+                            <div class="seletor" id="roxoM" onclick="purple()"></div>
+                            <div class="seletor" id="azulM" onclick="blue()"></div>
+                            <div class="seletor" id="rosaM" onclick="pink()"></div>
+                            <div class="seletor" id="amareloM" onclick="yellow()"></div>
+                            <div class="seletor" id="verdeM" onclick="green()"></div>
+                        </span>
+                    </span>
+                </div>
                 <input id='enviar' type='submit' value='Enviar' />
             </form>
         </main>

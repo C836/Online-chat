@@ -1,6 +1,6 @@
 #login{
     width: 300px;
-    height: 270px;
+    height: 250px;
     background-color: white;
     position: absolute;
     top: 50%;
@@ -26,11 +26,16 @@
     }
 
     #toggleDark{
-        display:flex; 
-        flex-direction:row;  
+        display:flex;
+        flex-direction: row;
         margin-top: 10px;
         align-items: center;
         font: 300 16px 'Poppins', sans-serif;
+    }
+
+    #toggleDark-menu{
+        display:flex; 
+        flex-direction:column;  
     }
 
     #botoes_login{

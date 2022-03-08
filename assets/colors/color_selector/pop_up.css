@@ -1,0 +1,57 @@
+.seletor_cores{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: var(--primaria);
+    cursor: pointer;
+    margin-left: auto;
+}
+
+#seletor_menu{
+    margin-top: 10px;
+}
+
+.cor_popup{
+    position: relative;
+    display: flex;
+    width: 160px;
+    height: 25px;
+    background-color: var(--primariaBright);
+    margin-bottom: 50px;
+    border: 18px transparent solid;
+    left: -85px;
+    top: -80px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.7) 0 0 20px;
+    z-index: 99;
+    cursor: auto;
+}
+
+.seletor{
+    width: 25px; 
+    height: 25px; 
+    border-radius: 100%;
+    margin-right:8px;
+    cursor: pointer;
+}
+
+#roxo , #roxoM{
+    background-color: #826AED;
+}
+
+#azul , #azulM{
+    background-color: #2583ff;
+}
+
+#rosa , #rosaM{
+    background-color: #ff2ded;
+}
+
+#amarelo , #amareloM{
+    background-color: #e2a600;
+}
+
+#verde , #verdeM{
+    background-color: #25d366;
+    margin-right:-8px;
+}

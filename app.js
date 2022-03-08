@@ -8,23 +8,22 @@ app.listen(process.env.PORT || 8080);
 console.log("Aplicação está em execução...");
 
 function resposta (req, res) {
-     var arquivo = "";
-     if(req.url == "/"){
-         arquivo = __dirname + '/index.html';
-     }else{
-         arquivo = __dirname + req.url;
-     }
-     fs.readFile(arquivo,
-         function (err, data) {
-              if (err) {
-                   res.writeHead(404);
-                   return res.end('Página ou arquivo não encontrados');
-              }
+    var arquivo = "";
+    if(req.url == "/"){
+        arquivo = __dirname + '/index.html';
+    }else{
+        arquivo = __dirname + req.url;
+    }
 
-              res.writeHead(200);
-              res.end(data);
-         }
-     );
+    fs.readFile(arquivo, (err, data) => {
+        if (err) {
+            res.writeHead(404);
+            return res.end('Página ou arquivo não encontrados');
+        }
+        res.writeHead(200);
+            res.end(data);
+      })
+
 }
 
 io.on("connection", function(socket){
@@ -81,11 +80,11 @@ io.on("connection", function(socket){
         if(usuario == null)
             usuario = '';
 
-            var obj_mensagem = "["+pegarDataAtual()+"] " + '<span class="msgHist">' + socket.apelido + " diz: " + mensagem_enviada;
+            var obj_mensagem = "["+pegarDataAtual()+"] " + '<span class="msgHist">' + socket.apelido + " : " + mensagem_enviada;
 
             if(usuario == ''){
-                    socket.emit("atualizar mensagens", '['+pegarDataAtual()+'] '  ,socket.apelido, " diz: " + mensagem_enviada);
-                    socket.broadcast.emit("atualizar mensagens", "[" + pegarDataAtual() + "] ",socket.apelido, " diz: " + mensagem_enviada);
+                    socket.emit("atualizar mensagens", '['+pegarDataAtual()+'] '  ,socket.apelido, " : " + mensagem_enviada);
+                    socket.broadcast.emit("atualizar mensagens", "[" + pegarDataAtual() + "] ",socket.apelido, " : " + mensagem_enviada);
                     
                     armazenaMensagem(obj_mensagem);
             }else{
@@ -105,9 +104,9 @@ io.on("connection", function(socket){
 
 function pegarDataAtual(){
  var dataAtual = new Date();
- var hora = (dataAtual.getHours()<10 ? '0' : '') + dataAtual.getHours();
- var minuto = (dataAtual.getMinutes()<10 ? '0' : '') + dataAtual.getMinutes();
- var segundo = (dataAtual.getSeconds()<10 ? '0' : '') + dataAtual.getSeconds();
+ var hora = (dataAtual.getHours()-3<10 ? '0' : '') + dataAtual.getHours();
+ var minuto = (dataAtual.getMinutes()-3<10 ? '0' : '') + dataAtual.getMinutes();
+ var segundo = (dataAtual.getSeconds()-3<10 ? '0' : '') + dataAtual.getSeconds();
 
  var dataFormatada = hora + ":" + minuto + ":" + segundo;
  return dataFormatada;

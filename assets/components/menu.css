@@ -19,6 +19,7 @@ main{
     background-color: var(--claroOutline);
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
 }
 
     #display{
@@ -41,13 +42,13 @@ main{
         }
 
         #lista_usuarios{
+            overflow: auto;
             margin: 15px 15px 15px  0;
             border-radius: 8px;
             font: 300 18px 'Poppins', sans-serif;
-            overflow: hidden;
-            border:none;
+            border: none;
             text-indent: 10px;
-
+            border: 8px transparent solid;
         }
 
             #lista_usuarios:focus{
@@ -56,6 +57,12 @@ main{
         
             option:checked{
                 background-color: rgb(175, 175, 175);
+                border-radius: 10px;
+            }
+
+            option{
+                padding: 5px 0;
+                margin: 4px 8px 4px 4px;
             }
 
     #chat{

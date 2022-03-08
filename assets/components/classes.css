@@ -80,12 +80,12 @@
 
 /*scrollbar*/
 
-#historico::-webkit-scrollbar {
+#historico::-webkit-scrollbar, #lista_usuarios::-webkit-scrollbar {
     width: 12px;
     border-radius: 5px;
 }
 
-#mensagem::-webkit-scrollbar {
+#mensagem::-webkit-scrollbar , #lista_usuarios::-webkit-scrollbar{
     width: 10px;
     border-radius: 6px;
 }
