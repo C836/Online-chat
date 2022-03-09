@@ -1,3 +1,5 @@
+$('#interface').css('pointer-events','none');
+
 $("form#login").submit(function (e) {
     e.preventDefault();
 
@@ -14,6 +16,8 @@ $("form#login").submit(function (e) {
                 alert("Nome já utilizado nesta sala");
             }
         });
+
+        $('#interface').css('pointer-events','auto');
     }
 });
 
@@ -25,6 +29,8 @@ $("#anon").click(function () {
     socket.emit("entrar", `Anônimo`, function (valido) {
         $("#login").fadeOut(200);
     });
+
+    $('#interface').css('pointer-events','auto');
 });
 
 socket.on("atualizar usuarios", function (usuarios) {

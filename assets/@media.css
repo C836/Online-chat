@@ -1,0 +1,14 @@
+@media (max-width: 500px){
+    #login{
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    #lista_usuarios{
+        display: none;
+    }
+    #display{
+        grid-template-columns: 1fr;
+    }
+    #toggleDark-menu{
+        display: none;
+    }
+}

@@ -8,12 +8,12 @@ socket.on("limpar_chat", function () {
 socket.on("atualizar mensagens", function (data, nome, mensagem) {
     if (nome === meuNome) {
         var mensagem_formatada = $("<p />").html(
-            "<span class='data'>" + data + "</span></br>" + `<span style="font: 400 16px 'Poppins', sans-serif;"><b>${nome}</b>` + mensagem).addClass("msg_propria");
+            "<span class='data'>" + data + "</span></br>" + `<span class="fonte"><b>${nome}</b>` + mensagem).addClass("msg_propria");
     }
 
     else {
         var mensagem_formatada = $("<p />").html(
-            "<span class='data'>" + data + "</span></br>" + `<span style="font: 400 16px 'Poppins', sans-serif;"><b>${nome}</b>` + mensagem).addClass("msg_outros");
+            "<span class='data'>" + data + "</span></br>" + `<span class="fonte"><b>${nome}</b>` + mensagem).addClass("msg_outros");
     }
 
     $("#historico").append(

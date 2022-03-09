@@ -9,6 +9,10 @@
     color: var(--escuroBackground);
 }
 
+.fonte{
+    font: 400 16px 'Poppins', sans-serif;
+}
+
 .dataHist{
     font: 15px 'Inconsolata', monospace;
     color: white;
@@ -72,9 +76,9 @@
     color: white;
     padding: 8px 20px;
     border-radius: 20px;
-    margin-bottom: 8px;
-    max-width: 80%;
+    max-width: 68%;
     display: inline-block;
+    margin: 6px 60px;
 }
 
 .msg_hist{

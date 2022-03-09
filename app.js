@@ -5,7 +5,6 @@ var usuarios = [];
 var ultimas_mensagens = [];
 
 app.listen(process.env.PORT || 8080);
-console.log("Aplicação está em execução...");
 
 function resposta (req, res) {
     var arquivo = "";
