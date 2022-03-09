@@ -52,8 +52,8 @@
     float: right;
     margin-bottom: 8px;
     max-width: 80%;
-    margin-left: 120px;
-    }
+    margin-left: 135px;
+}
 
 .msg_outros{
     background-color: #dddddd;
@@ -63,6 +63,7 @@
     margin-bottom: 8px;
     max-width: 80%;
     display: inline-block;
+    margin-right: 135px;
 }
 
 .msg_privada{
@@ -71,10 +72,9 @@
     color: white;
     padding: 8px 20px;
     border-radius: 20px;
-    float: right;
     margin-bottom: 8px;
     max-width: 80%;
-    margin-left: 120px;
+    display: inline-block;
 }
 
 .msg_hist{

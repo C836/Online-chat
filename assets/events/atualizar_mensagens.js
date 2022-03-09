@@ -23,12 +23,11 @@ socket.on("atualizar mensagens", function (data, nome, mensagem) {
 });
 
 socket.on("mensagem privada", function (data, nome, mensagem) {
-
     var mensagem_formatada = $("<p />").html(
         "<span class='dataHist'>" + data + "</span></br>" + nome + mensagem).addClass("msg_privada");
 
-    $("#historico").append(
-        $("<div />").html(mensagem_formatada));
+        $("#historico").append(
+            $("<div />").html(mensagem_formatada).addClass("div_saiu"));    
 
     document.getElementById("historico").scrollTop = document.getElementById("historico").scrollHeight;
 });
