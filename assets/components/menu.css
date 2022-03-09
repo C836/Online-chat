@@ -39,6 +39,7 @@ main{
             padding: 0 5px;
             line-height: 1.6;
             border: solid transparent 10px;
+            overflow-x: hidden;
         }
 
         #lista_usuarios{
