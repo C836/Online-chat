@@ -44,3 +44,22 @@
   width: 100%;
   text-align: center;
 }
+
+.historico{
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+
+  color: white;
+  background-color: #4d4d4d;
+  padding: 8px 20px;
+  border-radius: 20px;
+  clear:right;
+  margin-bottom: 8px;
+  max-width: 80%;
+  font: 400 16px "Poppins", sans-serif;
+}
+
+.historico .data {
+  color: white;
+}

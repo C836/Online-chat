@@ -67,14 +67,7 @@ function enviar_mensagem(socket, usuarios, dados, ultimas_mensagens, callback) {
 
   if (usuario == null) usuario = "";
 
-  var obj_mensagem =
-    "(" +
-    pegarDataAtual() +
-    ") " +
-    '<span class="msgHist">' +
-    socket.apelido +
-    ": " +
-    mensagem_enviada;
+  const obj_mensagem = {data: pegarDataAtual(), nome: socket.apelido, mensagem: mensagem_enviada}
 
   if (usuario == "") {
     socket.emit(

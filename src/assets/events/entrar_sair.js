@@ -21,14 +21,13 @@ socket.on("sair", function (data, nome, mensagem) {
   }
 });
 
-socket.on("mostrar historico", function (data, nome, mensagem) {
+socket.on("mostrar historico", function (objeto_mensagem) {
+  const { nome, data, mensagem } = objeto_mensagem;
+  const mensagem_formatada = new Mensagem(data, nome, mensagem).formatar("historico");
 
-    var mensagem_formatada = $("<p />").html(
-        "<span class='dataHist'>" + data + "</span>" + `<span class="fonte"><b>${nome}</b>` + mensagem).addClass("msg_hist");
-
-    $("#historico").append(
-        $("<div />").html(mensagem_formatada));
-
-    document.getElementById("historico").scrollTop = document.getElementById("historico").scrollHeight;
+  const container = new Mensagem().container(mensagem_formatada)
+  
+  historico.appendChild(container);
+  historico.scrollTop = historico.scrollHeight
 });
 
