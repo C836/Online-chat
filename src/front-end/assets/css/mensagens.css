@@ -1,0 +1,27 @@
+.data {
+  font: 15px "Inconsolata", monospace;
+  color: var(--escuroBackground);
+}
+
+.nome {
+  font-weight: bold;
+}
+
+.entrou {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+
+  background-color: var(--primariaBright);
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  max-width: 80%;
+  font: 400 16px "Poppins", sans-serif;
+}
+
+.entrou_container {
+  width: 100%;
+  text-align: center;
+}

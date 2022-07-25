@@ -1,12 +1,12 @@
+const historico = document.querySelector("#historico");
+
 socket.on("entrou", function (data, nome, mensagem) {
+  const mensagem_formatada = new Mensagem(data, nome, mensagem).entrou();
 
-    var mensagem_formatada = $("<p />").html(
-        "<span class='data'>" + data + "</span>" + `<span class="fonte"><b>${nome}</b>` + mensagem).addClass("msg_entrou");
-
-    $("#historico").append(
-        $("<div />").html(mensagem_formatada).addClass("div_entrou"));
-
-    document.getElementById("historico").scrollTop = document.getElementById("historico").scrollHeight;
+  const container = new Mensagem().container(mensagem_formatada)
+  
+  historico.appendChild(container);
+  historico.scrollTop = historico.scrollHeight;
 });
 
 
@@ -33,3 +33,4 @@ socket.on("mostrar historico", function (data, nome, mensagem) {
 
     document.getElementById("historico").scrollTop = document.getElementById("historico").scrollHeight;
 });
+

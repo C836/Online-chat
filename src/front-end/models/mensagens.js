@@ -5,6 +5,14 @@ class Mensagem {
     this.mensagem = mensagem;
   }
 
+  container(mensagem_formatada) {
+    const container = document.createElement("div");
+    container.appendChild(mensagem_formatada);
+    container.classList.add("entrou_container");
+
+    return container
+  }
+
   entrou() {
 
     const p_data = document.createElement("span");
