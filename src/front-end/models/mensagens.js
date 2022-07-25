@@ -5,15 +5,15 @@ class Mensagem {
     this.mensagem = mensagem;
   }
 
-  container(mensagem_formatada) {
+  container(mensagem_formatada, classe) {
     const container = document.createElement("div");
     container.appendChild(mensagem_formatada);
-    container.classList.add("entrou_container");
+    container.classList.add(classe);
 
     return container
   }
 
-  entrou() {
+  formatar(classe) {
 
     const p_data = document.createElement("span");
     const p_data_texto = document.createTextNode(this.data)
@@ -37,7 +37,7 @@ class Mensagem {
     p.appendChild(p_data);
     p.appendChild(p_nome)
     p.appendChild(p_mensagem)
-    p.classList.add("entrou");
+    p.classList.add(classe);
 
     return p
   }

@@ -1,9 +1,9 @@
 const historico = document.querySelector("#historico");
 
 socket.on("entrou", function (data, nome, mensagem) {
-  const mensagem_formatada = new Mensagem(data, nome, mensagem).entrou();
+  const mensagem_formatada = new Mensagem(data, nome, mensagem).formatar("entrou");
 
-  const container = new Mensagem().container(mensagem_formatada)
+  const container = new Mensagem().container(mensagem_formatada, "entrou_container")
   
   historico.appendChild(container);
   historico.scrollTop = historico.scrollHeight;
