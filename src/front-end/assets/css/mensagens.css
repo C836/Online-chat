@@ -25,3 +25,22 @@
   width: 100%;
   text-align: center;
 }
+
+.saiu {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+
+  background-color: var(--primaria);
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  max-width: 80%;
+  font: 400 16px "Poppins", sans-serif;
+}
+
+.saiu_container {
+  width: 100%;
+  text-align: center;
+}

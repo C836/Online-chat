@@ -11,16 +11,14 @@ socket.on("entrou", function (data, nome, mensagem) {
 
 
 socket.on("sair", function (data, nome, mensagem) {
+  if(nome!==null){
+    const mensagem_formatada = new Mensagem(data, nome, mensagem).formatar("saiu");
 
-    if(nome!==null){
-    var mensagem_formatada = $("<p />").html(
-        "<span class='data'>" + data + "</span>" + `<span class="fonte"><b>${nome}</b>` + mensagem).addClass("msg_saiu");
-    }
-
-    $("#historico").append(
-        $("<div />").html(mensagem_formatada).addClass("div_saiu"));
-
-    document.getElementById("historico").scrollTop = document.getElementById("historico").scrollHeight;
+    const container = new Mensagem().container(mensagem_formatada, "saiu_container")
+    
+    historico.appendChild(container);
+    historico.scrollTop = historico.scrollHeight
+  }
 });
 
 socket.on("mostrar historico", function (data, nome, mensagem) {
