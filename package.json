@@ -4,7 +4,8 @@
   "description": "Chat virtual com sistema de salas e usuários online utilizando socket.IO e nodeJS",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon ./app.js"
   },
   "repository": {
     "type": "git",
