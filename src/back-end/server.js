@@ -15,14 +15,14 @@ function entrar(socket, io, apelido, usuarios, ultimas_mensagens, callback) {
 
     socket.emit(
       "entrou",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       apelido,
       " entrou na sala"
     );
 
     socket.broadcast.emit(
       "entrou",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       apelido,
       " acabou de entrar na sala"
     );
@@ -42,14 +42,14 @@ function entrar(socket, io, apelido, usuarios, ultimas_mensagens, callback) {
 
     socket.emit(
       "entrou",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       apelido,
       " entrou na sala"
     );
 
     socket.broadcast.emit(
       "entrou",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       apelido,
       " acabou de entrar na sala"
     );
@@ -79,13 +79,13 @@ function enviar_mensagem(socket, usuarios, dados, ultimas_mensagens, callback) {
   if (usuario == "") {
     socket.emit(
       "atualizar mensagens",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       socket.apelido,
       ": " + mensagem_enviada
     );
     socket.broadcast.emit(
       "atualizar mensagens",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       socket.apelido,
       ": " + mensagem_enviada
     );
@@ -95,13 +95,13 @@ function enviar_mensagem(socket, usuarios, dados, ultimas_mensagens, callback) {
   } else {
     socket.emit(
       "mensagem privada",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       "",
       ` Para <b>${usuario}</b>: ` + mensagem_enviada
     );
     usuarios[usuario].emit(
       "mensagem privada",
-      "(" + pegarDataAtual() + ") ",
+      pegarDataAtual(),
       "<b>" + socket.apelido + "</b>",
       ` diz para você: ` + mensagem_enviada
     );
