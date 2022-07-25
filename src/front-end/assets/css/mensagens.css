@@ -3,6 +3,14 @@
   color: var(--escuroBackground);
 }
 
+.data::before {
+  content: "(" ;
+}
+
+.data::after {
+  content: ")" ;
+}
+
 .nome {
   font-weight: bold;
 }
@@ -62,4 +70,8 @@
 
 .historico .data {
   color: white;
+}
+
+.historico .nome::after {
+  content: ':';
 }
