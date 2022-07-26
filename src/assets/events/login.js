@@ -11,11 +11,11 @@ function on_login(form_element) {
   const form_data = form_element.target;
   const username = form_data.username.value;
 
-  const incognito = !username.trim().length;
+  const submitter = form_element.submitter
 
-  if (!incognito) {
+  if (submitter === "login") {
     login(username);
-  } else {
+  } else if (submitter === "incognito_login") {
     incognito_login();
   }
 }
