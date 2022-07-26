@@ -1,8 +1,6 @@
 const interface = document.querySelector("#interface");
-const background = document.querySelector("#background")
 
 disable(interface);
-disable(background)
 
 const login_form = document.querySelector("#login_form");
 login_form.addEventListener("submit", (form_element) => on_login(form_element));
@@ -25,20 +23,17 @@ function on_login(form_element) {
 function login(username) {
   socket.emit("entrar", username, function (valido) {
     if (valido) {
-      $("#login").fadeOut(200);
-      $("#background").removeClass("disabled");
-      $("#interface").removeClass("disabled");
+      enable(interface);
+
       disable(login_form)
     } else {
-      $("#acesso_usuario").val("");
       alert("Nome já utilizado nesta sala");
     }
   });
 }
 
 function incognito_login() {
-  $("#background").removeClass("disabled");
-  $("#interface").removeClass("disabled");
+  enable(interface);
 
   socket.emit("entrar", `Anônimo`, function (valido) {
     $("#login").fadeOut(200);
