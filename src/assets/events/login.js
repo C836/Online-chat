@@ -1,37 +1,48 @@
-$('#interface').css('pointer-events','none');
+const interface = document.querySelector("#interface");
 
-$("form#login").submit(function (e) {
-    e.preventDefault();
+const login_form = document.querySelector("#login");
+login_form.addEventListener("submit", (form_element) => on_login(form_element));
 
-    if ($("#apelido").val() != "") {
-        meuNome = $("#apelido").val()
-        socket.emit("entrar", $(this).find("#apelido").val(), function (valido) {
+function on_login(form_element) {
+  form_element.preventDefault();
 
-            if (valido) {
-                $("#login").fadeOut(200);
-                $("#background").removeClass("preLogin")
-                $("#interface").removeClass("preLogin")
-            } else {
-                $("#acesso_usuario").val("");
-                alert("Nome já utilizado nesta sala");
-            }
-        });
+  const form_data = form_element.target;
+  const username = form_data.username.value;
 
-        $('#interface').css('pointer-events','auto');
+  const incognito = !username.trim().length;
+
+  if (!incognito) {
+    login(username);
+  } else {
+    incognito_login();
+  }
+}
+
+function login(username) {
+  socket.emit("entrar", username, function (valido) {
+    if (valido) {
+      $("#login").fadeOut(200);
+      $("#background").removeClass("preLogin");
+      $("#interface").removeClass("preLogin");
+    } else {
+      $("#acesso_usuario").val("");
+      alert("Nome já utilizado nesta sala");
     }
-});
+  });
 
-$("#anon").click(function () {
+  interface.classList.remove("disabled")
+}
 
-    $("#background").removeClass("preLogin")
-    $("#interface").removeClass("preLogin")
+function incognito_login() {
+  $("#background").removeClass("preLogin");
+  $("#interface").removeClass("preLogin");
 
-    socket.emit("entrar", `Anônimo`, function (valido) {
-        $("#login").fadeOut(200);
-    });
+  socket.emit("entrar", `Anônimo`, function (valido) {
+    $("#login").fadeOut(200);
+  });
 
-    $('#interface').css('pointer-events','auto');
-});
+  interface.classList.remove("disabled")
+}
 
 socket.on("atualizar usuarios", function (usuarios) {
     $("#lista_usuarios").empty();

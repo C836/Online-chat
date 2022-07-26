@@ -24,6 +24,7 @@
 
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
+    <link rel="stylesheet" href="./src/front-end/assets/css/interface.css">
     <link rel="stylesheet" href="./src/front-end/assets/css/mensagens.css" >
     <script type="text/javascript" src="./src/front-end/models/mensagens.js" defer></script>
 
@@ -43,7 +44,7 @@
 
     <div id='acesso_usuario'>
         <form id='login'>
-            <input type='text' placeholder='Insira seu apelido' name='apelido' id='apelido' />
+            <input type='text' placeholder='Insira seu apelido' name='username' id='username' class="username" />
             
             <div id="toggleDark">
                 <label class="switch switch-login" style="margin:10px 10px 10px 0">
@@ -70,7 +71,7 @@
             </div>
         </form>
     </div>
-    <div id="interface" class="preLogin">
+    <div id="interface" class="interface disabled">
         <main id="main">
             <div id="display">
                 <div id='historico'></div>
