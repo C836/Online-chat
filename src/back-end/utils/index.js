@@ -1,16 +1,16 @@
-function formatar_apelido(apelido) {
-  return apelido.replace(/[`~!@#$%&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "");
+function format_nickname(nickname) {
+  return nickname.replace(/[`~!@#$%&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "");
 }
 
-function gerar_data() {
-  const horario_atual = new Date().toLocaleString('en-US', {
+function generate_date() {
+  const current_time = new Date().toLocaleString('en-US', {
     timeZone: "America/Sao_Paulo",
     hour: 'numeric',
     minute: 'numeric',
     hour12: true
   })
 
-  return horario_atual;
+  return current_time;
 }
 
 function generate_history (socket, message_list) {
@@ -20,7 +20,7 @@ function generate_history (socket, message_list) {
 }
 
 module.exports = {
-  formatar_apelido: formatar_apelido,
-  gerar_data: gerar_data,
+  format_nickname: format_nickname,
+  generate_date: generate_date,
   generate_history: generate_history
 };
