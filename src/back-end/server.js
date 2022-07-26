@@ -1,11 +1,13 @@
 const { formatar_apelido, gerar_data } = require('./utils/index')
 
 function entrar(socket, io, input_apelido, usuarios, ultimas_mensagens, callback) {
-  const apelido = formatar_apelido(input_apelido)
+  const apelido = !input_apelido 
+    ? null
+    : formatar_apelido(input_apelido)
 
-  if (apelido === "Anônimo") {
-    socket.apelido = apelido;
-    usuarios[apelido] = socket;
+  if (!apelido) {
+    socket.apelido = "Anônimo";
+    usuarios["Anônimo"] = socket;
 
     socket.emit("limpar_chat");
 
@@ -15,16 +17,14 @@ function entrar(socket, io, input_apelido, usuarios, ultimas_mensagens, callback
 
     io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
 
-    socket.emit("entrou", gerar_data(), apelido, " entrou na sala");
+    socket.emit("entrou", gerar_data(), "Anônimo", " entrou na sala");
 
     socket.broadcast.emit(
       "entrou",
       gerar_data(),
-      apelido,
+      "Anônimo",
       " acabou de entrar na sala"
     );
-
-    callback(true);
   } else if (!(apelido in usuarios)) {
     socket.apelido = apelido;
     usuarios[apelido] = socket;

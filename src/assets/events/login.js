@@ -11,7 +11,7 @@ function on_login(form_element) {
   const form_data = form_element.target;
   const username = form_data.username.value;
 
-  const submitter = form_element.submitter
+  const submitter = form_element.submitter.id
 
   if (submitter === "login") {
     login(username);
@@ -21,7 +21,7 @@ function on_login(form_element) {
 }
 
 function login(username) {
-  socket.emit("entrar", username, function (valido) {
+  socket.emit("entrar", username, (valido) => {
     if (valido) {
       enable(interface);
 
@@ -35,9 +35,7 @@ function login(username) {
 function incognito_login() {
   enable(interface);
 
-  socket.emit("entrar", `Anônimo`, function (valido) {
-    $("#login").fadeOut(200);
-  });
+  socket.emit("entrar", null)
 
   disable(login_form)
 }
