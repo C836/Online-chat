@@ -13,7 +13,14 @@ function gerar_data() {
   return horario_atual;
 }
 
+function generate_history (socket, message_list) {
+  for (index in message_list) {
+    socket.emit("mostrar historico", message_list[index]);
+  }
+}
+
 module.exports = {
   formatar_apelido: formatar_apelido,
-  gerar_data: gerar_data
+  gerar_data: gerar_data,
+  generate_history: generate_history
 };
