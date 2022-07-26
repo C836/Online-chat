@@ -1,9 +1,9 @@
-const { formatar_apelido, gerar_data } = require('./utils/index')
+const { format_nickname, generate_date, generate_history } = require('./utils/index')
 
 function entrar(socket, io, input_apelido, usuarios, ultimas_mensagens, callback) {
   const apelido = !input_apelido 
     ? null
-    : formatar_apelido(input_apelido)
+    : format_nickname(input_apelido)
 
   if (!apelido) {
     socket.apelido = "Anônimo";
@@ -17,11 +17,11 @@ function entrar(socket, io, input_apelido, usuarios, ultimas_mensagens, callback
 
     io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
 
-    socket.emit("entrou", gerar_data(), "Anônimo", " entrou na sala");
+    socket.emit("entrou", generate_date(), "Anônimo", " entrou na sala");
 
     socket.broadcast.emit(
       "entrou",
-      gerar_data(),
+      generate_date(),
       "Anônimo",
       " acabou de entrar na sala"
     );
@@ -39,14 +39,14 @@ function entrar(socket, io, input_apelido, usuarios, ultimas_mensagens, callback
 
     socket.emit(
       "entrou",
-      gerar_data(),
+      generate_date(),
       apelido,
       " entrou na sala"
     );
 
     socket.broadcast.emit(
       "entrou",
-      gerar_data(),
+      generate_date(),
       apelido,
       " acabou de entrar na sala"
     );
@@ -64,18 +64,18 @@ function enviar_mensagem(socket, usuarios, dados, ultimas_mensagens, callback) {
 
   if (usuario == null) usuario = "";
 
-  const obj_mensagem = {data: gerar_data(), nome: socket.apelido, mensagem: mensagem_enviada}
+  const obj_mensagem = {data: generate_date(), nome: socket.apelido, mensagem: mensagem_enviada}
 
   if (usuario == "") {
     socket.emit(
       "atualizar mensagens",
-      gerar_data(),
+      generate_date(),
       socket.apelido,
       ": " + mensagem_enviada
     );
     socket.broadcast.emit(
       "atualizar mensagens",
-      gerar_data(),
+      generate_date(),
       socket.apelido,
       ": " + mensagem_enviada
     );
@@ -85,13 +85,13 @@ function enviar_mensagem(socket, usuarios, dados, ultimas_mensagens, callback) {
   } else {
     socket.emit(
       "mensagem privada",
-      gerar_data(),
+      generate_date(),
       "",
       ` Para <b>${usuario}</b>: ` + mensagem_enviada
     );
     usuarios[usuario].emit(
       "mensagem privada",
-      gerar_data(),
+      generate_date(),
       "<b>" + socket.apelido + "</b>",
       ` diz para você: ` + mensagem_enviada
     );
@@ -105,7 +105,7 @@ function desconectar(socket, io, usuarios) {
   io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
   io.sockets.emit(
     "sair",
-    "(" + gerar_data() + ") ",
+    "(" + generate_date() + ") ",
     socket.apelido,
     " saiu da sala"
   );
