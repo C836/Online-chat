@@ -1,6 +1,10 @@
 const interface = document.querySelector("#interface");
+const background = document.querySelector("#background")
 
-const login_form = document.querySelector("#login");
+disable(interface);
+disable(background)
+
+const login_form = document.querySelector("#login_form");
 login_form.addEventListener("submit", (form_element) => on_login(form_element));
 
 function on_login(form_element) {
@@ -22,26 +26,25 @@ function login(username) {
   socket.emit("entrar", username, function (valido) {
     if (valido) {
       $("#login").fadeOut(200);
-      $("#background").removeClass("preLogin");
-      $("#interface").removeClass("preLogin");
+      $("#background").removeClass("disabled");
+      $("#interface").removeClass("disabled");
+      disable(login_form)
     } else {
       $("#acesso_usuario").val("");
       alert("Nome já utilizado nesta sala");
     }
   });
-
-  interface.classList.remove("disabled")
 }
 
 function incognito_login() {
-  $("#background").removeClass("preLogin");
-  $("#interface").removeClass("preLogin");
+  $("#background").removeClass("disabled");
+  $("#interface").removeClass("disabled");
 
   socket.emit("entrar", `Anônimo`, function (valido) {
     $("#login").fadeOut(200);
   });
 
-  interface.classList.remove("disabled")
+  disable(login_form)
 }
 
 socket.on("atualizar usuarios", function (usuarios) {

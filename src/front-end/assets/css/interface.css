@@ -11,7 +11,7 @@
   pointer-events: none;
 }
 
-#login {
+.login_form {
   width: 300px;
   height: 250px;
   background-color: white;
@@ -26,6 +26,12 @@
   border-radius: 20px;
   z-index: 99;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s;
+}
+
+.login_form.disabled {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .username {
@@ -56,7 +62,7 @@
   margin-top: auto;
 }
 
-.entrar {
+.login {
   margin-top: 10px;
   width: 100%;
   color: rgb(255, 255, 255);
@@ -67,11 +73,11 @@
   cursor: pointer;
 }
 
-.entrar:nth-child(1) {
+.login:nth-child(1) {
   color: white;
   background-color: var(--primariaDark);
 }
 
-.entrar:hover {
+.login:hover {
   filter: brightness(65%);
 }

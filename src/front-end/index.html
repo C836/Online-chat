@@ -26,6 +26,9 @@
 
     <link rel="stylesheet" href="./src/front-end/assets/css/interface.css">
     <link rel="stylesheet" href="./src/front-end/assets/css/mensagens.css" >
+
+    <script type="text/javascript" src="./src/front-end/utils/index.js" defer></script>
+
     <script type="text/javascript" src="./src/front-end/models/mensagens.js" defer></script>
 
     <script type="text/javascript" src="./src/assets/events/atualizar_mensagens.js" defer></script>
@@ -39,11 +42,11 @@
 </head>
 <body>
 
-    <div id="background" class="preLogin">
+    <div id="background">
     </div>
 
     <div id='acesso_usuario'>
-        <form id='login'>
+        <form id="login_form" class="login_form">
             <input type='text' placeholder='Insira seu apelido' name='username' id='username' class="username" />
             
             <div id="toggleDark">
@@ -66,12 +69,12 @@
             </div>
 
             <div id="botoes_login">
-                <input type='button' class="entrar" id="anon" value="Anônimo" />
-                <input type='submit' class="entrar" value='Entrar' />
+                <button class="login" id="incognito_login">Anônimo</button>
+                <button class="login" id="login">Entrar</button>
             </div>
         </form>
     </div>
-    <div id="interface" class="interface disabled">
+    <div id="interface" class="interface">
         <main id="main">
             <div id="display">
                 <div id='historico'></div>
