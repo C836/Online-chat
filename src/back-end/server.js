@@ -5,55 +5,28 @@ function entrar(socket, io, input_apelido, usuarios, ultimas_mensagens, callback
     ? null
     : format_nickname(input_apelido)
 
-  if (!apelido) {
-    socket.apelido = "Anônimo";
-    usuarios["Anônimo"] = socket;
-
-    socket.emit("limpar_chat");
-
-    for (indice in ultimas_mensagens) {
-      socket.emit("mostrar historico", ultimas_mensagens[indice], "", "");
-    }
-
-    io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
-
-    socket.emit("entrou", generate_date(), "Anônimo", " entrou na sala");
-
-    socket.broadcast.emit(
-      "entrou",
-      generate_date(),
-      "Anônimo",
-      " acabou de entrar na sala"
-    );
-  } else if (!(apelido in usuarios)) {
-    socket.apelido = apelido;
-    usuarios[apelido] = socket;
-
-    socket.emit("limpar_chat");
-
-    for (indice in ultimas_mensagens) {
-      socket.emit("mostrar historico", ultimas_mensagens[indice], "", "");
-    }
-
-    io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
-
-    socket.emit(
-      "entrou",
-      generate_date(),
-      apelido,
-      " entrou na sala"
-    );
-
-    socket.broadcast.emit(
-      "entrou",
-      generate_date(),
-      apelido,
-      " acabou de entrar na sala"
-    );
-
-    callback(true);
-  } else {
+  if(apelido in usuarios) {
     callback(false);
+    return
+  }
+
+  socket.apelido = apelido;
+  usuarios[apelido] = socket;
+
+  socket.emit("limpar_chat");
+  io.sockets.emit("atualizar usuarios", Object.keys(usuarios));
+  generate_history(socket, ultimas_mensagens)
+
+  io.sockets.emit(
+    "entrou",
+    generate_date(),
+    apelido,
+    " entrou na sala"
+  );
+
+  if(apelido) {
+    callback(true);
+    return
   }
 }
 
